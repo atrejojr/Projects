@@ -1,0 +1,3 @@
+Project Description:
+
+The TSAL Control system, like its name says, controls the Tractive System Active Light (TSAL). Based on the SAE Formula Hybrid + Electric (2025 v1) rule book, there are a few things to consider when designing this control board. It is important to note that this system is not a part of the shutdown loop but serves to warn those around the vehicle that there is high voltage present. This board is only active when high voltage is present outside the AIR coils. In our case, the TS Stepdown will only activate when the HV system is above 100V, so we do not need to integrate voltage comparators or any type of galvanic isolation. The TSAL will flash red at a frequency of 2-5Hz.
