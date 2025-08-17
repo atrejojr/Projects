@@ -1,5 +1,6 @@
 #include <stdio.h>                      // allows for input/output operations
 #include <stdbool.h>                    // allows for boolean operations
+#include <string.h>                     // allows for string operations
 
 int main(){
 
@@ -100,38 +101,41 @@ int main(){
     printf("%d\n", z);
     z = x * y;
     printf("%d\n", z);
-    z = x / y;                      // int cannot store decimal portions AND int division will lead to the same problem, instead make z and y floats
+    z = x / y;                          // int cannot store decimal portions AND int division will lead to the same problem, instead make z and y floats
     printf("%d\n", z);
-    z = x % y;                      // modulous gives remainder, helps determine even/odd
+    z = x % y;                          // modulous gives remainder, helps determine even/odd
     printf("%d\n", z);          
-    x++;                            // augmented assignment operators:
+    x++;                                // augmented assignment operators:
     printf("%d\n", x);
     x--;
     printf("%d\n", x);
-    x+=2;                           // is the same as x = x + 2
+    x+=2;                               // is the same as x = x + 2
     printf("%d\n", x);
-    x-=2;                           // is the same as x = x - 2
+    x-=2;                               // is the same as x = x - 2
     printf("%d\n", x);
-    x*=2;                           // is the same as x = x * 2
+    x*=2;                               // is the same as x = x * 2
     printf("%d\n", x);
-    x/=2;                           // is the same as x = x / 2
+    x/=2;                               // is the same as x = x / 2
     printf("%d\n", x);
 
     // user input
     printf("Enter your age: ");
-    fflush(stdout);                 // forces the prompt to display before waiting for input
     scanf("%d", &askAge);
     printf("Enter your gpa: ");     
-    fflush(stdout);
-    scanf(" %.2f", &askGpa);         // make sure to add a space before % as there is usually a \n in buffer
+    scanf("%f", &askGpa);               // make sure to add a space before % as there is usually a \n in buffer
     printf("Enter your letter grade: ");
-    fflush(stdout);
     scanf(" %c", &askGrade);
-    printf("Enter your first name: ");
-    fflush(stdout);                 // scanf will stop reading after encountering any spaces, bad for multiple words, use fgets instead
-    fgets(askName, sizeof(askName), stdin)               
+    getchar();                          // clears input buffer \n from previous scanf, otherwise fgets will read the \n as input
+    printf("Enter your full name: ");
+    fgets(askName, sizeof(askName), stdin);
+    askName[strlen(askName) - 1] = '\0';// removes trailing newline which stops code
+    fflush(stdout);
 
-    return 0;                       // helps with backwards compatibility
+    printf("Your age is %d.\n", askAge);
+    printf("Your GPA is %.2f.\n", askGpa);
+    printf("Your letter grade is %c.\n", askGrade);
+    printf("Your full name is %s.\n", askName);
+
+
+    return 0;                           // helps with backwards compatibility
 }
-
-1:03:55
